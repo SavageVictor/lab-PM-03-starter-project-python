@@ -4,7 +4,11 @@ WORKDIR /app
 
 COPY requirements/backend.txt /app
 
+RUN apk add --no-cache --virtual .build-deps alpine-sdk
+
 RUN pip install --no-cache-dir -r backend.txt
+
+RUN apk del .build-deps
 
 COPY . /app
 
