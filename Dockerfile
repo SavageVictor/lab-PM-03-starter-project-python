@@ -1,14 +1,14 @@
-FROM python:3.10-alpine
+FROM python:3.10-bullseye
 
 WORKDIR /app
 
 COPY requirements/backend.txt /app
 
-RUN apk add --no-cache --virtual .build-deps alpine-sdk
+# RUN apk add --no-cache --virtual .build-deps bullseye-sdk
 
 RUN pip install --no-cache-dir -r backend.txt
 
-RUN apk del .build-deps
+# RUN apk del .build-deps
 
 COPY . /app
 
